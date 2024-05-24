@@ -1,15 +1,30 @@
 import React from 'react';
+import './Task.css';
 
 interface Props {
   text: string;
-  deleteTask: () => void;
+  onRemoveTask: React.MouseEventHandler;
+  completed: boolean;
+  onChangeComplete: React.ChangeEventHandler;
 }
 
-const Task:React.FC<Props> = ({text, deleteTask}) => {
+const Task: React.FC<Props> = ({
+     text,
+     onRemoveTask,
+     completed,
+     onChangeComplete
+   }) => {
+
   return (
-    <div className="task">
-        <p className="task-descr">{text}</p>
-        <button onClick={deleteTask}>Delete task</button>
+    <div className={`task ${completed ? 'completed' : ''}`}>
+      <p className="task-descr">{text}</p>
+      <div className="task-ui">
+        <label className="checkbox-label">
+          <input className="task-checkbox" type="checkbox" checked={completed} onChange={onChangeComplete}/>
+          <span></span>
+        </label>
+        <button onClick={onRemoveTask}>Delete task</button>
+      </div>
     </div>
   );
 };
