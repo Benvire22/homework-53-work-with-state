@@ -5,7 +5,7 @@ interface Props {
   text: string;
   onRemoveTask: React.MouseEventHandler;
   completed: boolean;
-  onChangeComplete: React.ChangeEventHandler;
+  onChangeComplete: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const Task: React.FC<Props> = ({

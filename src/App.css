@@ -4,3 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+
+.tasks {
+  padding: 20px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

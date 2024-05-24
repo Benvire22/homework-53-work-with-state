@@ -1,17 +1,19 @@
 .task {
-  width: 800px;
-  border: 1px solid red;
+  font-size: 22px;
+  color: #1f4159;
+  width: 80%;
+  border: 2px solid #5986ad;
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   padding: 15px 10px;
   border-radius: 12px;
+  background: #fff;
 }
 
 .completed {
   background: #1f4159;
   color: #fff;
-  border: 1px #1f4159;
 }
 
 .completed button {
@@ -20,7 +22,8 @@
 }
 
 .checkbox-label {
-  margin-top: 5px;
+  cursor: pointer;
+  margin-top: 8px;
 }
 
 .task-checkbox {

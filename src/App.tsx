@@ -13,19 +13,19 @@ const getId = () => Date.now().toString();
 
 const App = () => {
   const [tasks, setTasks] = useState<ITask[]>([
-    {text: 'Hello World 1!', id: '1', completed: false},
-    {text: 'Hello World 2!', id: '2', completed: false},
-    {text: 'Hello World 3!', id: '3', completed: false},
+    {text: 'Закончить домашку!', id: '14565432345432', completed: true},
+    {text: 'Привести в порядок стили!', id: '26543456787654', completed: true},
+    {text: 'Покушать...', id: '33456765432345', completed: false},
   ]);
 
-  const addNewTask = (event: React.FormEvent<HTMLFormElement>, newPost: string) => {
+  const addNewTask = (event: React.FormEvent<HTMLFormElement>, newTask: string) => {
     event.preventDefault();
-    if (newPost.length > 3) {
-      const post: ITask = {text: newPost, id: getId(), completed: false};
+    if (newTask.length > 3) {
+      const task: ITask = {text: newTask, id: getId(), completed: false};
 
       setTasks((prevState) => {
-        const copyTasks =  [...prevState];
-        copyTasks.push(post);
+        const copyTasks = [...prevState];
+        copyTasks.push(task);
         return copyTasks;
       });
     }
@@ -33,9 +33,9 @@ const App = () => {
   };
 
   const deleteTask = (id: string) => {
-      setTasks((prevTasks) => {
-        return prevTasks.filter((task) => task.id !== id);
-      });
+    setTasks((prevTasks) => {
+      return prevTasks.filter((task) => task.id !== id);
+    });
   };
 
   const toggleCompleted = (id: string) => {
@@ -53,13 +53,15 @@ const App = () => {
   return (
     <div className="App">
       <AddTaskForm addNewTask={addNewTask}/>
+      <h1>To Do list</h1>
       <div className="tasks">
         {
-          tasks ? (
+          tasks.length !== 0 ? (
             tasks.map(({text, id, completed}) => (
-              <Task key={id} text={text} onRemoveTask={() => deleteTask(id)} completed={completed} onChangeComplete={() => toggleCompleted(id)}/>
+              <Task key={id} text={text} onRemoveTask={() => deleteTask(id)} completed={completed}
+                    onChangeComplete={() => toggleCompleted(id)}/>
             ))
-          ) : <p>Пока ничего нету</p>
+          ) : <h2>Пока ничего нету</h2>
         }
       </div>
     </div>
